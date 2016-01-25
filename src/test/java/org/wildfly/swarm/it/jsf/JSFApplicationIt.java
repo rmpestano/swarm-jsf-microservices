@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNotNull;
  * @author rmpestano
  */
 @RunWith(Arquillian.class)
-//@InVM
+@InVM
 public class JSFApplicationIt{
 
     @Inject
