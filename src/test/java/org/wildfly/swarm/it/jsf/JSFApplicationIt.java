@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
  * @author Bob McWhirter
  */
 @RunWith(Arquillian.class)
-public class JSFApplicationTest{
+public class JSFApplicationIt{
 
     @Inject
     Message message;
