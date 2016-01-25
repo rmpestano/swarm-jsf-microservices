@@ -8,6 +8,7 @@ import org.jboss.shrinkwrap.api.importer.ZipImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.swarm.arquillian.InVM;
 import org.wildfly.swarm.examples.jsf.Message;
 
 import javax.inject.Inject;
@@ -16,9 +17,10 @@ import java.io.File;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * @author Bob McWhirter
+ * @author rmpestano
  */
 @RunWith(Arquillian.class)
+//@InVM
 public class JSFApplicationIt{
 
     @Inject
