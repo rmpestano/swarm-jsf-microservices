@@ -1,21 +1,19 @@
 package org.wildfly.swarm.it.jsf;
 
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.importer.ZipImporter;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-import org.wildfly.swarm.arquillian.InVM;
-import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.examples.jsf.Message;
 
 import javax.inject.Inject;
+import java.io.File;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 /**
  * @author Bob McWhirter
@@ -26,10 +24,17 @@ public class JSFApplicationTest{
     @Inject
     Message message;
 
-    @Deployment
+   /* @Deployment
     public static Archive createDeployment() {
         return ShrinkWrap.create(JARArchive.class)
                 .addClass(Message.class);
+    }*/
+
+    @Deployment
+    public static Archive createDeployment() {
+        WebArchive war = ShrinkWrap.create(ZipImporter.class, "swarm-jsf.war").
+                importFrom(new File("target/swarm-jsf.war")).as(WebArchive.class);
+        return war;
     }
 
     @Test
